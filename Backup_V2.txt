@@ -1,0 +1,375 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <stdlib.h>
+#include "TextTable.h"
+using namespace std;
+// Nhap vao tkb mau de tao user moi
+void inputSchedule_ex(string arr[12][6])
+{
+    fstream schedule_ex("schedule_ex.txt");
+    string temp;
+    for (int i = 0; i <= 11; i++)
+        {
+            for (int j = 0; j <= 5; j++)
+            {
+                getline(schedule_ex,arr[i][j],'-');
+            }
+            getline(schedule_ex,temp);
+        }
+}
+// In ra menu
+int printMainMenu() 
+{
+    int choose;
+    cout << "\tWelcome !!!!" << endl;
+    cout << "1. Xem thoi khoa bieu da xep" << endl;
+    cout << "2. Dat lich thoi khoa bieu moi" << endl;
+    cout << "3. Tao user moi" << endl;
+    cout << "4. Thoat" << endl;
+    cout << "Xin moi chon 1 chuc nang: ";
+    cin >> choose;
+    return choose;
+}
+// Nhan vao ten dang nhap va kiem tra voi file "login.txt"
+string inputLoginCode(fstream &login)
+{
+    string str,code;
+    bool check = true;
+    while (check == true)
+    {
+        login.seekg(0,ios::beg);
+        cout << "Moi ban nhap ho va ten de tiep tuc: ";
+        getline(cin,str);
+        while(login.eof() != true)
+        {
+            getline(login,code);
+            if (str == code)
+            {
+                check = false;
+                break;
+            }
+        }
+    }
+    return code;
+}
+// Ve TKB vao khung
+void veTKB(string arr[12][6])
+{
+    TextTable t( '=', '|', '=' );
+    for (int i = 0; i <= 11; i++)
+    {
+        for (int j = 0; j <= 5; j++)
+        {
+             t.add( arr[i][j] );
+        }
+        t.endOfRow();
+    }
+    std::cout << t;
+    
+}
+// Ve TKB vao khung
+void veTKB1(string arr[12][6],int m, int n)
+{
+    TextTable t( '=', '|', '=' );
+    for (int i = m; i <= m; i++)
+    {
+        for (int j = 0; j <= n; j++)
+        {
+             t.add( arr[i][j] );
+        }
+        t.endOfRow();
+    }
+    std::cout << t;
+    
+}
+// Menu de xem TKB da sap xep
+void Menu1(fstream &schedule,string arr[12][6],string &tenGV)
+{
+    string temp;
+    
+    for (int i = 0; i <= 11; i++)
+    {
+        getline(schedule,temp);
+        for (int j = 0; j <= 5; j++)
+        {
+            getline(schedule,arr[i][j],'-');
+        }
+        
+    }
+    veTKB(arr);
+
+}
+//thuc hien chuc nang chinh sua tkb
+void change(string arr[12][6], int m, string tenGV)
+{  
+    int index;
+    string temp;
+    veTKB1(arr,m,5);
+    cout << "Nhap tiet can dieu chinh: ";
+    cin >> index;
+    cout << "Nhap noi dung can dieu chinh: ";
+    cin.ignore();
+    getline(cin,arr[m][index]);
+    cout << "TKB moi" << endl;
+    veTKB(arr);
+    ofstream schedule(tenGV + ".txt",ios_base::trunc);
+    schedule << tenGV << endl;
+    for (int i = 0; i <= 11; i++)
+    {
+        for (int j = 0; j <= 5; j++)
+        {
+            schedule << arr[i][j] <<"-";
+        }
+        schedule << endl;
+    }
+}
+// Menu 2
+void Menu2(fstream &schedule,string arr[12][6],string tenGV)
+{
+    int thu,buoi;
+    string temp,temp1;
+    cout << "Thoi khoa bieu hien tai cua ban" << endl;
+    Menu1(schedule,arr,tenGV);
+    again:
+    cout << "Vui long chon thu muon dieu chinh TKB: " ;
+    cin >> thu;
+    cout << "Vui long chon buoi muon dieu chinh TKB (Sang hoac Chieu): " ;
+    cin >> temp;
+    if (temp == "Sang") buoi = 1;
+    if (temp == "Chieu") buoi = 2;
+    int index;
+    switch (thu)
+    {
+    case 2:
+        switch (buoi)
+        {
+        case 1:
+            change(arr,0,tenGV);
+            break;
+        case 2:
+            change(arr,1,tenGV);
+        default:
+            cout << "Thu nhap vao khong hop le vui long chon lai !" << endl;
+            goto again; 
+            break;
+        }
+        break;
+    case 3:
+        switch (buoi)
+        {
+        case 1:
+            change(arr,2,tenGV);
+            break;
+        case 2:
+            change(arr,3,tenGV);
+            break;
+        default:
+            cout << "Thu nhap vao khong hop le vui long chon lai !" << endl;
+            goto again; 
+            break;
+        }
+        break;
+    case 4:
+        switch (buoi)
+        {
+        case 1:
+            change(arr,4,tenGV);
+            break;
+        case 2:
+            change(arr,5,tenGV);
+            break;
+        default:
+            cout << "Thu nhap vao khong hop le vui long chon lai !" << endl;
+            goto again; 
+            break;
+        }
+        break;
+    case 5:
+        switch (buoi)
+        {
+        case 1:
+            change(arr,6,tenGV);
+            break;
+        case 2:
+            change(arr,7,tenGV);
+            break;
+        default:
+            cout << "Thu nhap vao khong hop le vui long chon lai !" << endl;
+            goto again; 
+            break;
+        }
+        break;
+    case 6:
+        switch (buoi)
+        {
+        case 1:
+            change(arr,8,tenGV);
+            break;
+        case 2:
+            change(arr,9,tenGV);
+            break;
+        default:
+            cout << "Thu nhap vao khong hop le vui long chon lai !" << endl;
+            goto again; 
+            break;
+        }
+        break;
+    case 7:
+        switch (buoi)
+        {
+        case 1:
+            change(arr,10,tenGV);
+            break;
+        case 2:
+            change(arr,11,tenGV);
+            break;
+        default:
+            cout << "Thu nhap vao khong hop le vui long chon lai !" << endl;
+            goto again; 
+            break;
+        }
+        break;
+    default:
+        cout << "Thu nhap vao khong hop le vui long chon lai !"<<endl;
+        goto again; 
+        break;
+    }
+
+}
+// Tao user moi cho admin
+int Menu3(string arr[12][6],fstream &login)
+{
+    string n;
+    cin.ignore();
+    cout << "Nhap ten nguoi dung can tao: ";
+    getline(cin,n);
+    if (n == "exit") return 4; 
+    login.clear();
+    login << endl;
+    login << n;
+    fstream newUser(n + ".txt");
+    if (!newUser.is_open())
+    {
+        ofstream newUser(n + ".txt");
+        newUser << n;
+        newUser << endl;
+        inputSchedule_ex(arr);
+        for (int i = 0; i <= 11; i++)
+        {
+            for (int j = 0; j <= 5; j++)
+            {
+                newUser << arr[i][j] << "-";
+            }
+            newUser << endl;
+        }
+
+    }
+    else
+    {
+        cout << "Ten user da ton tai !. Vui long chon ten khac";
+    }
+    login.close();
+       
+}
+// Lua chon cua nguoi dung
+int choose(int choose, fstream &schedule, string arr[12][6],string &tenGV,fstream &login)
+{
+    int temp;
+    switch (choose)
+    {
+    case 1:
+        Menu1(schedule,arr,tenGV);
+        return 1;
+        break;
+    case 2:
+        Menu2(schedule,arr,tenGV);
+        return 2;
+        break;
+    case 3:
+        if (tenGV == "Admin")
+        {
+            temp = Menu3(arr,login);
+            goto exit;
+        }
+        else
+        {
+            cout << "Lien he admin de tao user moi" << endl;
+        }
+        return 3;
+        break;
+    case 4:
+        exit:
+        cout << "Cam on ban da su dung chuong trinh" << endl;
+        return 4;
+        break;
+    default:
+        cout << "Lua chon khong hop le vui long chon lai !" << endl;
+        break;
+    }
+    return 0;
+}
+
+int main()
+{
+    system("clear");   
+    fstream login("login.txt"); // Mo file de doc
+    string arr[12][6], tenGV;
+    tenGV = inputLoginCode(login);
+    again:
+    fstream schedule(tenGV + ".txt");
+    system("clear");  
+    int chon;
+    chon = choose(printMainMenu(),schedule,arr,tenGV,login);
+    if (chon == 2)
+    {
+        char n;
+        again2:
+        fstream schedule(tenGV + ".txt");
+        cout << "Ban muon co muon tiep tuc ? - Nhap Y de tiep tuc hoac N de dung: ";
+        cin >> n;
+        system("clear");
+        if (n == 'Y')
+        {
+            system("clear");
+            choose(2,schedule,arr,tenGV,login); 
+            schedule.close();
+            goto again2;
+        }
+    }
+    if (chon == 1)
+    {
+        char n;
+        cout << "Ban muon co muon tiep tuc ? - Nhap Y de tiep tuc hoac N de dung: ";
+        cin >> n;
+        if (n == 'Y')
+        {
+            system("clear");
+            goto again;
+        }
+        
+    }
+    if (chon == 3)
+    {
+        char n;
+        cout << "Ban muon co muon tiep tuc ? - Nhap Y de tiep tuc hoac N de dung: ";
+        cin >> n;
+        if (n == 'Y')
+        {
+            if (tenGV == "Admin")
+            {
+                again3:
+                system("clear");
+                choose(3,schedule,arr,tenGV,login);
+                goto again3; 
+            }
+            else
+            {
+                goto again;
+            }
+        }
+    }
+    login.close();
+    schedule.close();
+    return 0;
+}
