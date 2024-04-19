@@ -1,1 +1,3 @@
-# 1st_project_schedule (thời khóa biểu)
+# Schedule Management
+**Overview**
+- Schedule Management Project
