@@ -1,0 +1,13 @@
+Quang C
+Thu2_Sang:-Mon 2.1-Mon 2.2-Mon 2.3-Mon 2.4-Mon 2.5-
+Thu2_Chieu:-Mon 2.5-Mon 2.4-Mon 2.3-Mon 2.2-Mon 2.1-
+Thu3_Sang:-Mon 3.1-Mon 3.2-Mon 3.3-Mon 3.4-Mon 3.5-
+Thu3_Chieu:-Mon 3.5-Mon 3.4-Mon 3.3-Mon 3.2-Mon 3.1-
+Thu4_Sang:-Mon 4.1-Mon 4.2-Mon 4.3-Mon 4.4-Mon 4.5-
+Thu4_Chieu:-Mon 4.5-Mon 4.4-Mon 4.3-Mon 4.2-Mon 4.1-
+Thu5_Sang:-Mon 5.1-Mon 5.2-Mon 5.3-Mon 5.4-Mon 5.5-
+Thu5_Chieu:-Mon 5.5-Mon 5.4-Mon 5.3-Mon 5.2-Mon 5.1-
+Thu6_Sang:-Mon 6.1-Mon 6.2-Mon 6.3-Mon 6.4-Mon 6.5-
+Thu6_Chieu:-Mon 6.5-Mon 6.4-Mon 6.3-Mon 6.2-Mon 6.1-
+Thu7_Sang:-Mon 7.1-Mon 7.2-Mon 7.3-Mon 7.4-Mon 7.5-
+Thu7_Chieu:-Mon 7.5-Mon 7.4-Mon 7.3-Mon 7.2-Mon 7.1-
