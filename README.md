@@ -2,7 +2,9 @@
 **Overview**
 - Schedule Management Project
 
-Subject: Introduction To Programming
+**Subject**: Introduction To Programming
+
+**Demo**
 ![1](https://github.com/yudhnaa/Schedule-management_1st-Project/assets/58298820/d418f0d7-767f-4e70-b84c-6177ad998b9c)
 ![2](https://github.com/yudhnaa/Schedule-management_1st-Project/assets/58298820/6f2ec21f-5e55-4478-b64c-ec73a7090ab8)
 ![3](https://github.com/yudhnaa/Schedule-management_1st-Project/assets/58298820/e1780b74-782b-4165-9702-aef98ed94cc2)
