@@ -2,7 +2,11 @@
 **Overview**
 - Schedule Management Project
 
+**Features**: "Demo"
+
 **Subject**: Introduction To Programming
+
+**Language**: C++
 
 **Demo**
 ![1](https://github.com/yudhnaa/Schedule-management_1st-Project/assets/58298820/d418f0d7-767f-4e70-b84c-6177ad998b9c)
